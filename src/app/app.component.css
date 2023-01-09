@@ -57,12 +57,12 @@
 
 .temperature {
     color: var(--color-main);
-    font-size: 3.5rem;
+    font-size: 3rem;
     text-align: center;
     font-weight: 900;
 }
 
-.more-info-label {
+.more-info-label, .wrong-information-message {
     color: var(--color-main);
     font-size: 1.3rem;
     text-align: center;

@@ -9,19 +9,15 @@
   </form>
 </div>
 
-<div class="container" *ngIf="weatherData && !wrongCityName; else noData">
+<div class="container">
   <div class="upper-data">
-    <img
-      src="../assets/hot.jpg"
-      alt="hotImg"
-      *ngIf="weatherData.current.temp_c > 15"
-    />
     <img
       src="../assets/weatherImage.jpg"
       alt="coldImg"
-      *ngIf="weatherData.current.temp_c <= 15"
+      *ngIf="!wrongCityName"
     />
-    <div class="weather-data">
+    <img src="../assets/sad_emoji.png" alt="sadEmoji" *ngIf="wrongCityName" />
+    <div class="weather-data" *ngIf="!wrongCityName">
       <div class="location">{{ weatherData.location.name }}</div>
       <div class="temperature">
         {{ weatherData.current.temp_c }}°C / {{ weatherData.current.temp_f }}°F
@@ -29,8 +25,11 @@
     </div>
   </div>
   <div class="lower-data">
-    <div class="more-info-label">More Information</div>
-    <div class="more-info-container">
+    <div class="more-info-label" *ngIf="!wrongCityName">More Information</div>
+    <div class="wrong-information-message" *ngIf="wrongCityName">
+      Sorry, but we can't find this place
+    </div>
+    <div class="more-info-container" *ngIf="!wrongCityName">
       <div class="info-block">
         <div class="info-block-label">
           <img src="../assets/wind_icon.png" alt="#" />
