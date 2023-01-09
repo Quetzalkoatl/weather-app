@@ -11,7 +11,7 @@ import { WeatherService } from './services/weather.service';
 })
 export class AppComponent implements OnInit {
   cityName: string = 'Moscow';
-  wrongCityName: boolean = true;
+  wrongCityName: boolean = false;
   weatherData!: IWeatherData;
 
   constructor(private weatherService: WeatherService) {}
