@@ -9,12 +9,12 @@ import { IWeatherData } from '../models/weather.model';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getWeatherData(cityName: string) {
-    return this.http.get<IWeatherData>(
-      environment.weatherApiBaseUrl +
-        environment.key +
-        '&q=' +
-        cityName.toLowerCase()
-    );
-  }
+  // getWeatherData(cityName: string) {
+  //   return this.http.get<IWeatherData>(
+  //     environment.weatherApiBaseUrl +
+  //       environment.key +
+  //       '&q=' +
+  //       cityName.toLowerCase()
+  //   );
+  // }
 }

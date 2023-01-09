@@ -2,7 +2,7 @@
   <form #form="ngForm" (submit)="onSubmit()">
     <input
       type="text"
-      placeholder="Search city"
+      placeholder="Please enter city name"
       name="city"
       [(ngModel)]="cityName"
     />
@@ -17,53 +17,57 @@
       *ngIf="weatherData.current.temp_c > 15"
     />
     <img
-      src="../assets/cold.jpg"
+      src="../assets/weatherImage.jpg"
       alt="coldImg"
       *ngIf="weatherData.current.temp_c <= 15"
     />
     <div class="weather-data">
       <div class="location">{{ weatherData.location.name }}</div>
       <div class="temperature">
-        {{ weatherData.current.temp_c.toFixed(1) }}°C
+        {{ weatherData.current.temp_c }}°C / {{ weatherData.current.temp_f }}°F
       </div>
     </div>
   </div>
   <div class="lower-data">
-    <div class="more-info-label">Details</div>
+    <div class="more-info-label">More Information</div>
     <div class="more-info-container">
       <div class="info-block">
         <div class="info-block-label">
-          <img src="" alt="#" />
-          <span>min t</span>
+          <img src="../assets/wind_icon.png" alt="#" />
+          <span>Wind speed</span>
         </div>
         <div class="info-block-value">
-          {{ weatherData.current.temp_c.toFixed(1) }}°C
+          {{ weatherData.current.wind_kph }} km/h /
+          {{ weatherData.current.wind_mph }} mi/h
         </div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
-          <img src="" alt="#" />
-          <span>max t</span>
+          <img src="../assets/humidity_icon.png" alt="#" />
+          <span>Humidity</span>
         </div>
-        <div class="info-block-value">
-          {{ weatherData.current.temp_c.toFixed(1) }}°C
-        </div>
+        <div class="info-block-value">{{ weatherData.current.humidity }}%</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
-          <img src="" alt="#" />
-          <span>humidity</span>
+          <img src="../assets/location_icon.png" alt="#" />
+          <span>Country</span>
         </div>
-        <div class="info-block-value">Ignore</div>
+        <div class="info-block-value">{{ weatherData.location.country }}</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
-          <img src="" alt="#" />
-          <span>wind</span>
+          <img src="../assets/time_icon.png" alt="#" />
+          <span>Local time</span>
         </div>
-        <div class="info-block-value">
-          {{ weatherData.current.wind_kph }} km/h
+        <div class="info-block-value">{{ weatherData.location.localtime }}</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/timezone_icon.png" alt="#" />
+          <span>Timezone</span>
         </div>
+        <div class="info-block-value">{{ weatherData.location.tz_id }}</div>
       </div>
     </div>
   </div>
