@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherData } from './models/weather.model';
+import { IWeatherData } from './models/weather.model';
 import { WeatherService } from './services/weather.service';
-
-import { testingWeatherData } from 'src/testingWeatherData';
 
 @Component({
   selector: 'app-root',
@@ -11,37 +9,36 @@ import { testingWeatherData } from 'src/testingWeatherData';
 })
 export class AppComponent implements OnInit {
   cityName: string = 'Moscow';
-  wrongCityName: boolean = true;
-  weatherData!: WeatherData;
+  wrongCityName: boolean = false;
+  weatherData!: IWeatherData;
 
   constructor(private weatherService: WeatherService) {}
 
-  ngOnInit(): void {}
-
-  onSubmit() {
-    console.log(this.cityName);
-    if (this.cityName.toLowerCase() === testingWeatherData.name.toLowerCase()) {
-      this.wrongCityName = false;
-      this.weatherData = testingWeatherData;
-    } else {
-      this.wrongCityName = true;
-    }
+  ngOnInit(): void {
+    this.getWeatherData(this.cityName);
   }
 
-  // onSubmit() {
-  //   this.getWeatherData(this.cityName);
-  //   this.cityName = '';
-  // }
+  onSubmit() {
+    this.getWeatherData(this.cityName);
+  }
 
-  // ngOnInit(): void {
-  //   this.getWeatherData(this.cityName);
-  // }
-
-  // private getWeatherData(cityName: string) {
-  //   this.weatherService.getWeatherData(cityName).subscribe({
-  //     next: (response) => {
-  //       this.weatherData = response;
-  //     },
-  //   });
-  // }
+  private getWeatherData(cityName: string) {
+    this.weatherService.getWeatherData(cityName).subscribe({
+      next: (response) => {
+        if (
+          response.location.name &&
+          cityName.toLowerCase() === response.location.name.toLowerCase()
+        ) {
+          this.weatherData = response;
+          this.wrongCityName = false;
+        } else {
+          this.wrongCityName = true;
+        }
+      },
+      error: (error) => {
+        this.wrongCityName = true;
+        console.log(error);
+      },
+    });
+  }
 }

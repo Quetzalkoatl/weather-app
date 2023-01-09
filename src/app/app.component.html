@@ -14,17 +14,17 @@
     <img
       src="../assets/hot.jpg"
       alt="hotImg"
-      *ngIf="0.5556 * (weatherData.main.temp - 32) > 15"
+      *ngIf="weatherData.current.temp_c > 15"
     />
     <img
       src="../assets/cold.jpg"
       alt="coldImg"
-      *ngIf="0.5556 * (weatherData.main.temp - 32) <= 15"
+      *ngIf="weatherData.current.temp_c <= 15"
     />
     <div class="weather-data">
-      <div class="location">{{ weatherData.name }}</div>
+      <div class="location">{{ weatherData.location.name }}</div>
       <div class="temperature">
-        {{ (0.5556 * (weatherData.main.temp - 32)).toFixed(1) }}°C
+        {{ weatherData.current.temp_c.toFixed(1) }}°C
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
           <span>min t</span>
         </div>
         <div class="info-block-value">
-          {{ (0.5556 * (weatherData.main.temp_min - 32)).toFixed(1) }}°C
+          {{ weatherData.current.temp_c.toFixed(1) }}°C
         </div>
       </div>
       <div class="info-block">
@@ -46,7 +46,7 @@
           <span>max t</span>
         </div>
         <div class="info-block-value">
-          {{ (0.5556 * (weatherData.main.temp_max - 32)).toFixed(1) }}°C
+          {{ weatherData.current.temp_c.toFixed(1) }}°C
         </div>
       </div>
       <div class="info-block">
@@ -54,14 +54,16 @@
           <img src="" alt="#" />
           <span>humidity</span>
         </div>
-        <div class="info-block-value">{{ weatherData.main.humidity }}%</div>
+        <div class="info-block-value">Ignore</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <img src="" alt="#" />
           <span>wind</span>
         </div>
-        <div class="info-block-value">{{ weatherData.wind.speed }} km/h</div>
+        <div class="info-block-value">
+          {{ weatherData.current.wind_kph }} km/h
+        </div>
       </div>
     </div>
   </div>
