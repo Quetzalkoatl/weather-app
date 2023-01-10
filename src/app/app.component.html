@@ -11,12 +11,8 @@
           />
         </form>
       </div>
-      <img
-        src="../assets/weatherImage.jpg"
-        alt="coldImg"
-        *ngIf="!wrongCityName"
-      />
-      <img src="../assets/sad_emoji.png" alt="sadEmoji" *ngIf="wrongCityName" />
+      <img src="assets/weatherImage.jpg" alt="coldImg" *ngIf="!wrongCityName" />
+      <img src="assets/sad_emoji.png" alt="sadEmoji" *ngIf="wrongCityName" />
       <div class="weather-data" *ngIf="!wrongCityName">
         <div class="location">{{ weatherData.location.name }}</div>
         <div class="temperature">
@@ -33,7 +29,7 @@
       <div class="more-info-container" *ngIf="!wrongCityName">
         <div class="info-block">
           <div class="info-block-label">
-            <img src="../assets/wind_icon.png" alt="#" />
+            <img src="assets/wind_icon.png" alt="#" />
             <span>Wind speed</span>
           </div>
           <div class="info-block-value">
@@ -43,7 +39,7 @@
         </div>
         <div class="info-block">
           <div class="info-block-label">
-            <img src="../assets/humidity_icon.png" alt="#" />
+            <img src="assets/humidity_icon.png" alt="#" />
             <span>Humidity</span>
           </div>
           <div class="info-block-value">
@@ -52,14 +48,14 @@
         </div>
         <div class="info-block">
           <div class="info-block-label">
-            <img src="../assets/location_icon.png" alt="#" />
+            <img src="assets/location_icon.png" alt="#" />
             <span>Country</span>
           </div>
           <div class="info-block-value">{{ weatherData.location.country }}</div>
         </div>
         <div class="info-block">
           <div class="info-block-label">
-            <img src="../assets/time_icon.png" alt="#" />
+            <img src="assets/time_icon.png" alt="#" />
             <span>Local time</span>
           </div>
           <div class="info-block-value">
@@ -68,7 +64,7 @@
         </div>
         <div class="info-block">
           <div class="info-block-label">
-            <img src="../assets/timezone_icon.png" alt="#" />
+            <img src="assets/timezone_icon.png" alt="#" />
             <span>Timezone</span>
           </div>
           <div class="info-block-value">{{ weatherData.location.tz_id }}</div>
