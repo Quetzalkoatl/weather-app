@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IWeatherData } from './models/weather.model';
 import { WeatherService } from './services/weather.service';
 
-// import { fakeData } from 'fakeData';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,7 +16,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWeatherData(this.cityName);
-    // this.weatherData = fakeData;
   }
 
   onSubmit() {
